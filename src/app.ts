@@ -2,6 +2,7 @@ import express from "express";
 import { dirname } from "path";
 import 'dotenv/config';
 import webRouter from "./routes/web";
+import initDatabase from "config/seed";
 
 
 
@@ -21,6 +22,8 @@ app.use(express.static('public'));
 // config routes
 webRouter(app);
 
+//seeding data
+initDatabase();
 
 app.listen(PORT, () => {
     console.log(`My app is running on http://localhost:${PORT}`);
